@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData;
 import com.example.dotodo.data.database.AppDatabase;
 import com.example.dotodo.data.database.TaskDao;
 import com.example.dotodo.data.model.Task;
+
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -35,5 +37,9 @@ public class TaskRepository {
 
     public void delete(Task task) {
         executorService.execute(() -> taskDao.delete(task));
+    }
+
+    public LiveData<List<Task>> getUncompletedTasksDueTomorrow(Date today, Date tomorrow) {
+        return taskDao.getUncompletedTasksDueTomorrow(today.getTime(), tomorrow.getTime());
     }
 }

@@ -39,6 +39,17 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp" />
 
+            <EditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:textSize="16sp"
+                android:background="@null"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:maxLines="1"/>
+
             <TextView
                 android:id="@+id/text_deadline"
                 android:layout_width="wrap_content"
