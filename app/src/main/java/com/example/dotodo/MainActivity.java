@@ -18,6 +18,9 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.dotodo.data.model.Task;
+import com.example.dotodo.network.GeminiClient;
+import com.example.dotodo.network.GenerateContentRequest;
+import com.example.dotodo.network.GenerateContentResponse;
 import com.example.dotodo.receiver.AlarmReceiver;
 import com.example.dotodo.viewmodel.TaskViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -26,6 +29,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_NOTIFICATION_PERMISSION = 1;
@@ -47,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         // 알림 권한 체크 및 알람 설정
         checkNotificationPermission();
         setupDailyAlarm();
+
+        // 테스트용 코드
+        testGeminiApi(this);
 
         /*
         // 테스트용 코드
@@ -118,6 +128,31 @@ public class MainActivity extends AppCompatActivity {
             );
             alarmManager.cancel(pendingIntent);
         }
+    }
+
+    // 테스트 메서드
+    public void testGeminiApi(Context context) {
+        GeminiClient client = GeminiClient.getInstance(context);
+        GenerateContentRequest request = new GenerateContentRequest("Hello, how are you?");
+
+        client.getApiService().generateContent(client.getApiKey(), request)
+                .enqueue(new Callback<GenerateContentResponse>() {
+                    @Override
+                    public void onResponse(Call<GenerateContentResponse> call,
+                                           Response<GenerateContentResponse> response) {
+                        if (response.isSuccessful() && response.body() != null) {
+                            String result = response.body().getGeneratedText();
+                            Log.d("GeminiAPI", "Response: " + result);
+                        } else {
+                            Log.e("GeminiAPI", "Error: " + response.message());
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<GenerateContentResponse> call, Throwable t) {
+                        Log.e("GeminiAPI", "Failure: " + t.getMessage());
+                    }
+                });
     }
 
     private void checkNotificationPermission() {
