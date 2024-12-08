@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -18,15 +17,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.dotodo.R;
 import com.example.dotodo.adapter.WeeklyScheduleAdapter;
+import com.example.dotodo.dialog.ScheduleConfirmDialog;
 import com.example.dotodo.viewmodel.ScheduleViewModel;
+import com.example.dotodo.viewmodel.TaskViewModel;
+import com.google.android.material.button.MaterialButton;
 
 public class ScheduleFragment extends Fragment {
     private ScheduleViewModel viewModel;
     private ProgressBar progressBar;
     private RecyclerView scheduleList;
     private WeeklyScheduleAdapter adapter;
-    private Button createButton;
     private boolean isTasksLoaded = false;
+    private TaskViewModel taskViewModel;
+    private ScheduleViewModel scheduleViewModel;
+    private MaterialButton createButton;
+    private MaterialButton saveButton;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
@@ -46,16 +51,23 @@ public class ScheduleFragment extends Fragment {
         setupRecyclerView();
         // 버튼 클릭 리스너 설정
         setupCreateButton();
+        setupSaveButton();  // 저장 버튼 설정 추가
+
+        viewModel.loadLastSchedule();
     }
 
     private void initViews(View view) {
         progressBar = view.findViewById(R.id.progress_bar);
         scheduleList = view.findViewById(R.id.schedule_list);
         createButton = view.findViewById(R.id.btn_create_schedule);
+        saveButton = view.findViewById(R.id.btn_save_schedule);
+
     }
 
     private void setupViewModel() {
         viewModel = new ViewModelProvider(this).get(ScheduleViewModel.class);
+//        scheduleViewModel = new ViewModelProvider(requireActivity()).get(ScheduleViewModel.class);
+//        taskViewModel = new ViewModelProvider(requireActivity()).get(TaskViewModel.class);
 
         // Task 데이터 변화 관찰
         viewModel.getTasks().observe(getViewLifecycleOwner(), tasks -> {
@@ -63,6 +75,12 @@ public class ScheduleFragment extends Fragment {
             if(tasks != null) {
                 Log.d("ScheduleFragment", "Tasks loaded: " + tasks.size());
             }
+
+        });
+
+        // 저장 버튼 표시 여부 관찰
+        viewModel.getIsSaveButtonVisible().observe(getViewLifecycleOwner(), isVisible -> {
+            saveButton.setVisibility(isVisible ? View.VISIBLE : View.GONE);
         });
 
         // 로딩 상태 관찰
@@ -79,16 +97,49 @@ public class ScheduleFragment extends Fragment {
                 Toast.makeText(requireContext(), error, Toast.LENGTH_LONG).show();
             }
         });
+
+
+        // 저장 버튼 표시 여부 관찰 추가
+        viewModel.getIsSaveButtonVisible().observe(getViewLifecycleOwner(), isVisible -> {
+            saveButton.setVisibility(isVisible ? View.VISIBLE : View.GONE);
+        });
+    }
+
+    // 저장 버튼 클릭 리스너 설정 추가
+    private void setupSaveButton() {
+        saveButton.setOnClickListener(v -> {
+            viewModel.saveCurrentSchedule();
+            Toast.makeText(requireContext(), "스케줄이 저장되었습니다.", Toast.LENGTH_SHORT).show();
+            saveButton.setVisibility(View.GONE);  // 저장 후 버튼 숨기기
+        });
     }
 
     private void setupCreateButton() {
         createButton.setOnClickListener(v -> {
-            if (isTasksLoaded) {  // Task 데이터가 로드된 후에만 스케줄 생성 가능
-                viewModel.generateSchedule();
+            // 현재 스케줄이 있을 때만 확인 다이얼로그 표시
+            if (adapter.getItemCount() > 0) {
+                showConfirmDialog();
             } else {
-                Toast.makeText(requireContext(), "데이터 로딩 중입니다. 잠시만 기다려주세요.", Toast.LENGTH_SHORT).show();
+                // 현재 스케줄이 없으면 바로 생성
+                viewModel.generateSchedule();
             }
         });
+    }
+
+    private void showConfirmDialog() {
+        ScheduleConfirmDialog dialog = new ScheduleConfirmDialog(requireContext(),
+                new ScheduleConfirmDialog.DialogListener() {
+                    @Override
+                    public void onConfirm() {
+                        viewModel.generateSchedule();
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // 취소 시 아무 동작 하지 않음
+                    }
+                });
+        dialog.show();
     }
 
     private void setupRecyclerView() {

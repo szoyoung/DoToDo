@@ -10,6 +10,7 @@ android {
 
     buildFeatures {
         buildConfig=true
+        viewBinding=true
     }
 
     defaultConfig {
@@ -52,6 +53,8 @@ dependencies {
     implementation ("com.google.code.gson:gson:2.9.0")
     implementation("androidx.room:room-runtime:2.5.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation("androidx.compose.ui:ui-text-google-fonts:1.5.4")
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
     annotationProcessor("androidx.room:room-compiler:2.5.0")

@@ -22,7 +22,7 @@ public class ScheduleParser {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         StringBuilder prompt = new StringBuilder();
         prompt.append("다음 정보를 바탕으로 ").append(dateFormat.format(startDate))
-                .append("부터 7일간의 일정을 만들어주세요.\n\n");
+                .append("부터 7일간의 일정을 만들어줘.\n\n");
 
         // 할 일 목록 추가
         prompt.append("【할 일 목록】\n");
@@ -37,14 +37,20 @@ public class ScheduleParser {
         prompt.append("\n【고정 스케줄】\n").append(fixedSchedule);
 
         // 응답 형식 지정
-        prompt.append("\n\n다음 형식으로 응답해주세요:\n");
+        prompt.append("\n\n다음 형식으로 각 날짜별 일정을 모두 작성해주세요:\n");
         prompt.append("===\n");
-        prompt.append(dateFormat.format(startDate)).append("\n");
-        prompt.append("09:00-10:30: 영어 공부\n");
-        prompt.append("11:00-12:00: 과제 작성\n");
+        prompt.append("2024-12-08\n");  // 예시 날짜
+        prompt.append("09:00-10:30: 일정1\n");
+        prompt.append("11:00-12:00: 일정2\n");
         prompt.append("===\n");
-        prompt.append("각 날짜는 === 구분선으로 구분해주세요.");
-
+        prompt.append("2024-12-09\n");  // 다음 날 예시 추가
+        prompt.append("09:00-10:30: 일정1\n");
+        prompt.append("===\n");
+        prompt.append("이런 식으로 7일 모두 작성해. 각 날짜는 === 구분선으로 구분해.\n");
+        prompt.append("그리고 하루의 모든 시간에 맞춰 일정을 작성할 필요는 없어.\n");
+        prompt.append("스케줄을 작성할때에는 우선순위와 마감일을 꼭 고려하고, 할 일 목록에 있는 task의 내용 그대로 작성해.\n");
+        prompt.append("【중요】\n");
+        prompt.append("- 스케줄링할 때 마감일을 절대 넘기면 안돼!!!.\n");
         return prompt.toString();
     }
 

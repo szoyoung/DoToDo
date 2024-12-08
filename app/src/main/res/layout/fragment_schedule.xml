@@ -4,18 +4,86 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/white">
 
-    <!-- Create New Schedule 버튼 -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_create_schedule"
+    <!-- 헤더 섹션 -->
+    <LinearLayout
+        android:id="@+id/header_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Create New Schedule..."
-        android:textColor="@color/white"
-        android:backgroundTint="@color/primary"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Scheduling"
+                android:textStyle="italic"
+                android:fontFamily="@font/abril_fatface"
+                android:textSize="32sp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_create_schedule"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/ic_add"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:cornerRadius="24dp"
+                android:backgroundTint="@color/primary"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_current_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/abril_fatface"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!-- 스케줄 목록 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/schedule_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingHorizontal="16dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintTop_toBottomOf="@id/header_section"
+        app:layout_constraintBottom_toTopOf="@id/btn_save_schedule"/>
+
+    <!-- Save Schedule 버튼 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save_schedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:text="Save Schedule"
+        android:textStyle="bold|italic"
+        android:textSize="18sp"
+        android:fontFamily="@font/abril_fatface"
+        android:textColor="@color/black"
+        android:backgroundTint="#E6F3FF"
+        app:cornerRadius="50dp"
+        android:paddingHorizontal="48dp"
+        android:paddingVertical="12dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <!-- 로딩 표시 -->
     <ProgressBar
@@ -28,16 +96,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-    <!-- 스케줄 목록 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/schedule_list"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:clipToPadding="false"
-        android:paddingBottom="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_create_schedule"
-        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

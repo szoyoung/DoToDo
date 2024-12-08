@@ -4,16 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp"
-    android:background="?attr/selectableItemBackground">
+    android:padding="8dp">
 
     <!-- 시간 -->
     <TextView
         android:id="@+id/text_time"
-        android:layout_width="80dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:textSize="14sp"
-        android:textColor="@color/secondary"/>
+        android:fontFamily="@font/abril_fatface"
+        android:textColor="@color/primary"/>
 
     <!-- 일정 제목 -->
     <TextView
@@ -21,8 +21,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:textSize="16sp"
-        android:textColor="@color/primary"
-        android:layout_marginStart="16dp"/>
+        android:layout_marginStart="16dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/abril_fatface"
+        android:textColor="@color/black"/>
 
 </LinearLayout>
