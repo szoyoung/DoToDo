@@ -19,8 +19,10 @@ public class ScheduleParser {
     private static final Pattern TIME_PATTERN = Pattern.compile("(\\d{2}:\\d{2})\\s*-\\s*(\\d{2}:\\d{2})\\s*:\\s*(.+)");
 
     public static String buildPrompt(List<Task> tasks, String fixedSchedule, Date startDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
         StringBuilder prompt = new StringBuilder();
-        prompt.append("다음 정보를 바탕으로 7일간의 일정을 만들어주세요.\n\n");
+        prompt.append("다음 정보를 바탕으로 ").append(dateFormat.format(startDate))
+                .append("부터 7일간의 일정을 만들어주세요.\n\n");
 
         // 할 일 목록 추가
         prompt.append("【할 일 목록】\n");
@@ -37,7 +39,7 @@ public class ScheduleParser {
         // 응답 형식 지정
         prompt.append("\n\n다음 형식으로 응답해주세요:\n");
         prompt.append("===\n");
-        prompt.append("2024-12-07\n");
+        prompt.append(dateFormat.format(startDate)).append("\n");
         prompt.append("09:00-10:30: 영어 공부\n");
         prompt.append("11:00-12:00: 과제 작성\n");
         prompt.append("===\n");

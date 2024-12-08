@@ -2,6 +2,9 @@ package com.example.dotodo.network;
 
 import android.content.Context;
 import com.example.dotodo.BuildConfig;
+
+import java.util.concurrent.TimeUnit;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -21,8 +24,11 @@ public class GeminiClient {
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(loggingInterceptor)
+                .connectTimeout(30, TimeUnit.SECONDS)  // 연결 타임아웃
+                .writeTimeout(30, TimeUnit.SECONDS)    // 쓰기 타임아웃
+                .readTimeout(30, TimeUnit.SECONDS)     // 읽기 타임아웃
                 .build();
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)

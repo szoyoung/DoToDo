@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         setupDailyAlarm();
 
         // 테스트용 코드
-        testGeminiApi(this);
+        //testGeminiApi(this);
 
         /*
         // 테스트용 코드
