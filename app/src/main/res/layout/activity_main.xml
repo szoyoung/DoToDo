@@ -14,7 +14,7 @@
         android:layout_height="match_parent"
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph"
-        android:layout_marginBottom="56dp"/> <!-- BottomNavigationView 높이만큼 마진 -->
+        android:layout_marginBottom="48dp"/> <!-- BottomNavigationView 높이만큼 마진 -->
 
     <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -23,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@color/white"
+        style="@style/CustomBottomNavigationView"
         app:menu="@menu/bottom_nav_menu"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

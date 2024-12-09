@@ -11,25 +11,19 @@
         android:id="@+id/text_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingVertical="8dp"
-        android:paddingHorizontal="16dp"
+        android:paddingVertical="4dp"
         android:textSize="18sp"
+        android:paddingHorizontal="32dp"
         android:textColor="@color/black"
         android:fontFamily="@font/abril_fatface"
         android:background="@drawable/bg_day_label"/>
 
-    <!-- 일정 카드 -->
-    <androidx.cardview.widget.CardView
+    <!-- 일정 리스트 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/event_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="8dp"
+        android:nestedScrollingEnabled="false"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/event_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:nestedScrollingEnabled="false"/>
-
-    </androidx.cardview.widget.CardView>
 </LinearLayout>

@@ -5,7 +5,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -22,6 +24,10 @@ import com.example.dotodo.viewmodel.ScheduleViewModel;
 import com.example.dotodo.viewmodel.TaskViewModel;
 import com.google.android.material.button.MaterialButton;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class ScheduleFragment extends Fragment {
     private ScheduleViewModel viewModel;
     private ProgressBar progressBar;
@@ -30,7 +36,7 @@ public class ScheduleFragment extends Fragment {
     private boolean isTasksLoaded = false;
     private TaskViewModel taskViewModel;
     private ScheduleViewModel scheduleViewModel;
-    private MaterialButton createButton;
+    private ImageButton createButton;
     private MaterialButton saveButton;
 
     @Override
@@ -42,6 +48,11 @@ public class ScheduleFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // 현재 날짜 설정
+        TextView dateText = view.findViewById(R.id.text_current_date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM d", Locale.US);
+        dateText.setText(dateFormat.format(new Date()));
 
         // 뷰 초기화
         initViews(view);

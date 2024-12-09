@@ -9,5 +9,9 @@
 
     </style>
 
+    <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:minHeight">48dp</item> <!-- 기본 56dp에서 48dp로 줄임 -->
+    </style>
+
     <style name="Theme.DoToDo" parent="Base.Theme.DoToDo" />
 </resources>

@@ -60,10 +60,9 @@ public class WeeklyScheduleAdapter extends RecyclerView.Adapter<WeeklyScheduleAd
         }
 
         void bind(DaySchedule schedule) {
-            // 날짜 표시
-            dateText.setText(new SimpleDateFormat("yyyy년 M월 d일 (E)", Locale.KOREA)
-                    .format(schedule.getDate()));
-
+            // 영어 요일 표시
+            SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", Locale.US);
+            dateText.setText(dayFormat.format(schedule.getDate()));
             // 일정 목록 설정
             eventAdapter.setEvents(schedule.getEvents());
         }

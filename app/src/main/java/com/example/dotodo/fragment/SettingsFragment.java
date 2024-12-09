@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,10 @@ import com.example.dotodo.MainActivity;
 import com.example.dotodo.R;
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 public class SettingsFragment extends Fragment {
     private TextInputEditText scheduleEdit;
@@ -31,6 +36,11 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // 현재 날짜 설정
+        TextView dateText = view.findViewById(R.id.text_current_date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM d", Locale.US);
+        dateText.setText(dateFormat.format(new Date()));
 
         sharedPreferences = requireContext().getSharedPreferences("settings", Context.MODE_PRIVATE);
 

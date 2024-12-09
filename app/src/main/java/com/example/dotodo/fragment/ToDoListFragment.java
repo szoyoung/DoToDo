@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,7 +24,9 @@ import com.example.dotodo.dialog.TaskDetailDialog;
 import com.example.dotodo.viewmodel.TaskViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 public class ToDoListFragment extends Fragment implements TaskAdapter.OnTaskClickListener {
     private TaskViewModel taskViewModel;
@@ -40,6 +43,13 @@ public class ToDoListFragment extends Fragment implements TaskAdapter.OnTaskClic
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // 현재 날짜 설정
+        TextView dateText = view.findViewById(R.id.text_current_date);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("EEEE, MMMM d", Locale.US);
+        dateText.setText(dateFormat.format(new Date()));
+
+
         initializeViews(view);
         setupRecyclerView(view);
         setupViewModel();

@@ -21,28 +21,38 @@
             android:orientation="horizontal"
             android:gravity="center_vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Scheduling"
-                android:textStyle="italic"
-                android:fontFamily="@font/abril_fatface"
-                android:textSize="32sp"/>
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
 
-            <com.google.android.material.button.MaterialButton
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Scheduling"
+                    android:textStyle="italic"
+                    android:fontFamily="@font/abril_fatface"
+                    android:textSize="32sp"
+                    android:textColor="@color/black"/>
+
+                <ImageView
+                    android:layout_width="33dp"
+                    android:layout_height="33dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/star_icon" />
+            </LinearLayout>
+
+            <ImageButton
                 android:id="@+id/btn_create_schedule"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:insetLeft="0dp"
-                android:insetTop="0dp"
-                android:insetRight="0dp"
-                android:insetBottom="0dp"
-                app:icon="@drawable/ic_add"
-                app:iconGravity="textStart"
-                app:iconPadding="0dp"
-                app:cornerRadius="24dp"
-                android:backgroundTint="@color/primary"/>
+                android:layout_width="wrap_content"
+                android:layout_height="43dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Create new schedule"
+                android:padding="8dp"
+                android:src="@drawable/ic_add"
+                android:tint="@color/black" />
         </LinearLayout>
 
         <TextView
@@ -51,7 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/abril_fatface"
-            android:textSize="16sp"/>
+            android:textSize="16sp"
+            android:textColor="@color/black"/>
     </LinearLayout>
 
     <!-- 스케줄 목록 -->
@@ -71,6 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
+        android:background="@drawable/bg_save_button"
         android:text="Save Schedule"
         android:textStyle="bold|italic"
         android:textSize="18sp"
