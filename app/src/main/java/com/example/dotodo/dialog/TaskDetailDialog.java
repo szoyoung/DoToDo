@@ -3,11 +3,12 @@ package com.example.dotodo.dialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -31,6 +32,8 @@ public class TaskDetailDialog extends Dialog {
     private TextView deadlineText;
     private Context context;
     private Date selectedDate;  // 선택된 날짜 저장
+    private TextView saveButton;
+    private TextView cancelButton;
 
     public TaskDetailDialog(Context context, Task task, TaskViewModel viewModel) {
         super(context);
@@ -45,13 +48,26 @@ public class TaskDetailDialog extends Dialog {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.dialog_task_detail);
 
+        // Dialog 창 스타일 설정
+        Window window = getWindow();
+        if (window != null) {
+            // 코드로 직접 shape drawable 생성
+            GradientDrawable shape = new GradientDrawable();
+            shape.setShape(GradientDrawable.RECTANGLE);
+            shape.setColor(Color.WHITE);
+            shape.setCornerRadius(50f); // radius 크기 조절 가능
+
+            window.setBackgroundDrawable(shape);
+        }
+
+
         // UI 요소 초기화
         descriptionEdit = findViewById(R.id.edit_description);
         priorityGroup = findViewById(R.id.priority_group);
         deadlineButton = findViewById(R.id.btn_set_deadline);
         deadlineText = findViewById(R.id.text_deadline);
-        Button saveButton = findViewById(R.id.btn_save);
-        Button cancelButton = findViewById(R.id.btn_cancel);
+        saveButton = findViewById(R.id.btn_save);
+         cancelButton = findViewById(R.id.btn_cancel);
 
         // 현재 데이터 표시
         if (task.getDescription() != null) {

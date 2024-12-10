@@ -116,4 +116,9 @@ public class ToDoListFragment extends Fragment implements TaskAdapter.OnTaskClic
         TaskDetailDialog dialog = new TaskDetailDialog(requireContext(), task, taskViewModel);
         dialog.show();
     }
+
+    @Override
+    public void onTaskDelete(Task task) {
+        taskViewModel.delete(task);
+    }
 }

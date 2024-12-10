@@ -22,14 +22,19 @@
 │   │   │   │               │   ├── database/
 │   │   │   │               │   │   ├── AppDatabase.java
 │   │   │   │               │   │   ├── DateConverter.java
+│   │   │   │               │   │   ├── ScheduleConverter.java
+│   │   │   │               │   │   ├── ScheduleDao.java
 │   │   │   │               │   │   └── TaskDao.java
 │   │   │   │               │   ├── model/
 │   │   │   │               │   │   ├── DaySchedule.java
+│   │   │   │               │   │   ├── Schedule.java
 │   │   │   │               │   │   ├── ScheduleEvent.java
 │   │   │   │               │   │   └── Task.java
 │   │   │   │               │   └── repository/
+│   │   │   │               │       ├── ScheduleRepository.java
 │   │   │   │               │       └── TaskRepository.java
 │   │   │   │               ├── dialog/
+│   │   │   │               │   ├── ScheduleConfirmDialog.java
 │   │   │   │               │   └── TaskDetailDialog.java
 │   │   │   │               ├── fragment/
 │   │   │   │               │   ├── ScheduleFragment.java
@@ -52,6 +57,11 @@
 │   │   │   │               └── SplashActivity.java
 │   │   │   ├── res/
 │   │   │   │   ├── drawable/
+│   │   │   │   │   ├── bg_btn_cancel.xml
+│   │   │   │   │   ├── bg_btn_save.xml
+│   │   │   │   │   ├── bg_day_label.xml
+│   │   │   │   │   ├── bg_save_button.xml
+│   │   │   │   │   ├── bg_schedule_item.xml
 │   │   │   │   │   ├── bottom_sheet_background.xml
 │   │   │   │   │   ├── edit_text_background.xml
 │   │   │   │   │   ├── ic_add.xml
@@ -59,18 +69,25 @@
 │   │   │   │   │   ├── ic_delete.xml
 │   │   │   │   │   ├── ic_launcher_background.xml
 │   │   │   │   │   ├── ic_launcher_foreground.xml
-│   │   │   │   │   └── ic_notification.xml
+│   │   │   │   │   ├── ic_notification.xml
+│   │   │   │   │   ├── splash_background.JPG
+│   │   │   │   │   └── star_icon.png
+│   │   │   │   ├── font/
+│   │   │   │   │   ├── abril_fatface.xml
+│   │   │   │   │   └── abril_fatface_regular.ttf
 │   │   │   │   ├── layout/
 │   │   │   │   │   ├── activity_main.xml
 │   │   │   │   │   ├── activity_splash.xml
 │   │   │   │   │   ├── dialog_add_task.xml
+│   │   │   │   │   ├── dialog_schedule_confirm.xml
 │   │   │   │   │   ├── dialog_task_detail.xml
 │   │   │   │   │   ├── fragment_schedule.xml
 │   │   │   │   │   ├── fragment_settings.xml
 │   │   │   │   │   ├── fragment_todo_list.xml
 │   │   │   │   │   ├── item_schedule.xml
 │   │   │   │   │   ├── item_schedule_event.xml
-│   │   │   │   │   └── item_task.xml
+│   │   │   │   │   ├── item_task.xml
+│   │   │   │   │   └── layout_fragment_header.xml
 │   │   │   │   ├── menu/
 │   │   │   │   │   └── bottom_nav_menu.xml
 │   │   │   │   ├── mipmap-anydpi/
@@ -117,7 +134,6 @@
 │   │   └── gradle-wrapper.properties
 │   └── libs.versions.toml
 ├── build.gradle.kts
-├── folder_structure_20241126_165838.md
 ├── folder_structure_export.py
 ├── gradle.properties
 ├── gradlew

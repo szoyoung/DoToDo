@@ -2,9 +2,12 @@ package com.example.dotodo.dialog;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Window;
 import android.widget.Button;
+
 import androidx.annotation.NonNull;
 
 import com.example.dotodo.R;
@@ -26,6 +29,17 @@ public class ScheduleConfirmDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_schedule_confirm);
+
+        Window window = getWindow();
+        if (window != null) {
+            // 코드로 직접 shape drawable 생성
+            GradientDrawable shape = new GradientDrawable();
+            shape.setShape(GradientDrawable.RECTANGLE);
+            shape.setColor(Color.WHITE);
+            shape.setCornerRadius(50f); // radius 크기 조절 가능
+
+            window.setBackgroundDrawable(shape);
+        }
 
         Button confirmButton = findViewById(R.id.btn_confirm);
         Button cancelButton = findViewById(R.id.btn_cancel);
