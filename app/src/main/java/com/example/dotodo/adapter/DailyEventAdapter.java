@@ -56,10 +56,6 @@ public class DailyEventAdapter extends RecyclerView.Adapter<DailyEventAdapter.Vi
             // 제목 표시
             titleText.setText(event.getTitle());
 
-//            // 일정 타입에 따른 배경색 설정
-//            int backgroundColor = event.getType() == ScheduleEvent.EventType.FIXED ?
-//                    R.color.priority_medium : R.color.priority_low;
-//            itemView.setBackgroundResource(backgroundColor);
         }
     }
 }

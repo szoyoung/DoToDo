@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,17 +15,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.dotodo.network.GeminiClient;
-import com.example.dotodo.network.GenerateContentRequest;
-import com.example.dotodo.network.GenerateContentResponse;
 import com.example.dotodo.receiver.AlarmReceiver;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.Calendar;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_NOTIFICATION_PERMISSION = 1;
@@ -122,30 +114,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // 테스트 메서드
-    public void testGeminiApi(Context context) {
-        GeminiClient client = GeminiClient.getInstance(context);
-        GenerateContentRequest request = new GenerateContentRequest("Hello, how are you?");
-
-        client.getApiService().generateContent(client.getApiKey(), request)
-                .enqueue(new Callback<GenerateContentResponse>() {
-                    @Override
-                    public void onResponse(Call<GenerateContentResponse> call,
-                                           Response<GenerateContentResponse> response) {
-                        if (response.isSuccessful() && response.body() != null) {
-                            String result = response.body().getGeneratedText();
-                            Log.d("GeminiAPI", "Response: " + result);
-                        } else {
-                            Log.e("GeminiAPI", "Error: " + response.message());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<GenerateContentResponse> call, Throwable t) {
-                        Log.e("GeminiAPI", "Failure: " + t.getMessage());
-                    }
-                });
-    }
 
     private void checkNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {

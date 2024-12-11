@@ -159,11 +159,6 @@ public class ScheduleFragment extends Fragment {
         scheduleList.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
-//    private void setupCreateButton() {
-//        createButton.setOnClickListener(v -> {
-//            viewModel.generateSchedule();
-//        });
-//    }
 
     private void setLoading(boolean isLoading) {
         progressBar.setVisibility(isLoading ? View.VISIBLE : View.GONE);

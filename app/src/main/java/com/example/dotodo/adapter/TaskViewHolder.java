@@ -34,21 +34,7 @@ public class TaskViewHolder extends RecyclerView.ViewHolder {
         titleView.setText(task.getTitle());
         checkBox.setChecked(task.isCompleted());
 
-        // 우선순위에 따른 배경색 설정
-       /* int backgroundColor;
-        switch (task.getPriority()) {
-            case 2: // 높음
-                backgroundColor = itemView.getContext().getResources().getColor(R.color.priority_high);
-                break;
-            case 1: // 보통
-                backgroundColor = itemView.getContext().getResources().getColor(R.color.priority_medium);
-                break;
-            default: // 낮음
-                backgroundColor = itemView.getContext().getResources().getColor(R.color.priority_low);
-                break;
-        }
-        itemView.findViewById(R.id.foreground_view).setBackgroundColor(backgroundColor);
-*/
+
         if (task.getDeadline() != null) {
             deadlineView.setVisibility(View.VISIBLE);
             deadlineView.setText(dateFormat.format(task.getDeadline()));
