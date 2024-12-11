@@ -8,7 +8,7 @@ DoToDo는 사용자의 할 일 목록을 관리하고, 우선순위와 마감일
 ---
 ## Contents
 - [How to use](#How-to-use)
-- [Key Features & Usage](#key-features---usage)
+- [Key Features & Usage](https://github.com/szoyoung/DoToDo/tree/main?tab=readme-ov-file#key-features--usage)
 - [Tech Stack](#Tech-Stack)
 - [Reference](#Reference)
 - [License](#License)
@@ -30,6 +30,7 @@ DoToDo는 사용자의 할 일 목록을 관리하고, 우선순위와 마감일
    - 사용자는 할 일 목록을 입력할 수 있다
    - 할 일이 추가되면 짧은 터치로 내용을 수정 가능하다
    - 긴 터치를 통해 할 일의 세부 사항, 우선순위, 마감일을 입력할 수 있다
+   - 왼쪽으로 스와이프를 통해 등록한 할 일을 삭제할 수 있다
    - to do list는 완료 여부, 우선순위, 마감일에 따라 정렬된다
    - 알림 기능을 켰을 경우, 완료되지 않은 항목이 있다면 하루 전에 상단의 팝업을 통해 알림을 받을 수 있다
 
