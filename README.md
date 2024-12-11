@@ -8,7 +8,7 @@ DoToDo는 사용자의 할 일 목록을 관리하고, 우선순위와 마감일
 ---
 ## Contents
 - [How to use](#How-to-use)
-- [Key Features & Usage](Key-Features-Usage)
+- [Key Features & Usage](Key-Features--Usage)
 - [Tech Stack](#Tech-Stack)
 - [Reference](#Reference)
 - [License](#License)
