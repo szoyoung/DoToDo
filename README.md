@@ -14,8 +14,20 @@ DoToDo는 사용자의 할 일 목록을 관리하고, 우선순위와 마감일
 - [License](#License)
 
 ---
-## How to use
+## How to Use
 
+### Installation Guide
+1. **APK 파일 다운로드**
+   - DoToDo repository의 `app/release/app-release.apk` 파일을 다운로드한다.
+
+2. **설치 과정**
+   - 다운로드한 APK 파일을 안드로이드 기기에서 실행한다.
+   - 알 수 없는 출처 앱 설치 허용이 필요할 수 있다.
+   - 설치 완료 후 앱을 실행한다.
+  
+### 시스템 요구사항
+- Android 버전: Android 6.0 (Marshmallow) 이상
+- 저장공간: 최소 50MB 이상의 여유공간
 ---
 ## Key Features & Usage
 **1. 구성요소**
