@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <!-- 헤더 섹션 -->
@@ -64,8 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fixed Schedule"
+            android:textColor="@color/black"
             android:textSize="18sp"
-
             android:fontFamily="@font/abril_fatface"
             android:layout_marginBottom="8dp"/>
 
@@ -73,7 +74,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusTopStart="16dp"
+            app:boxCornerRadiusTopEnd="16dp"
+            app:boxCornerRadiusBottomStart="16dp"
+            app:boxCornerRadiusBottomEnd="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_schedule"
@@ -92,6 +98,7 @@
             android:layout_height="wrap_content"
             android:text="Notification Settings"
             android:textSize="18sp"
+            android:textColor="@color/black"
             android:fontFamily="@font/abril_fatface"
             android:layout_marginBottom="8dp"/>
 
@@ -100,24 +107,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Incomplete Task Alerts"
+            android:textSize="12dp"
+            android:textColor="@color/secondary"
             android:fontFamily="@font/abril_fatface"
             android:layout_marginBottom="24dp"/>
 
-        <!-- 테마 설정 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Theme Settings"
-            android:textSize="18sp"
-            android:fontFamily="@font/abril_fatface"
-            android:layout_marginBottom="8dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="테마 설정 기능 준비 중"
-            android:textColor="@color/secondary"
-            android:padding="16dp"/>
 
     </LinearLayout>
 

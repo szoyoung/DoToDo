@@ -10,6 +10,15 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail"
+            android:fontFamily="@font/abril_fatface"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginBottom="8dp"/>
+
         <!-- Description 입력 영역 -->
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -22,12 +31,12 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edit_description"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="128dp"
+                android:fontFamily="@font/abril_fatface"
                 android:gravity="top"
                 android:hint="Enter details"
-                android:textSize="12dp"
-                android:fontFamily="@font/abril_fatface"
-                android:inputType="textMultiLine" />
+                android:inputType="textMultiLine"
+                android:textSize="12dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- 우선순위 설정 -->
@@ -36,7 +45,8 @@
             android:layout_height="wrap_content"
             android:text="Priority"
             android:fontFamily="@font/abril_fatface"
-            android:textColor="@color/secondary"
+            android:textColor="@color/black"
+            android:textSize="16dp"
             android:layout_marginBottom="8dp"/>
 
         <RadioGroup
@@ -50,16 +60,18 @@
                 android:id="@+id/radio_low"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="12dp"
                 android:fontFamily="@font/abril_fatface"
+                android:textColor="@color/secondary"
                 android:text="low"/>
 
             <RadioButton
                 android:id="@+id/radio_medium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="12dp"
                 android:fontFamily="@font/abril_fatface"
+                android:textColor="@color/secondary"
                 android:text="medium"/>
 
             <RadioButton
@@ -67,6 +79,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/abril_fatface"
+                android:textSize="12dp"
+                android:textColor="@color/secondary"
                 android:text="high"/>
         </RadioGroup>
 
@@ -75,8 +89,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deadline"
-            android:textColor="@color/secondary"
+            android:textColor="@color/black"
             android:fontFamily="@font/abril_fatface"
+            android:textSize="16dp"
             android:layout_marginBottom="8dp"/>
 
         <LinearLayout
@@ -92,7 +107,8 @@
                 android:layout_height="wrap_content"
                 android:text="Set Deadline"
                 android:fontFamily="@font/abril_fatface"
-                android:textColor="@color/black"
+                android:textColor="@color/secondary"
+                android:textSize="12dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 app:shapeAppearanceOverlay="@style/RoundedTextInputLayout"/>
 
@@ -122,6 +138,7 @@
                 android:textColor="@color/black"
                 android:textAlignment="center"
                 android:fontFamily="@font/abril_fatface"
+                android:textSize="12dp"
                 android:background="@drawable/bg_btn_save"
                 android:paddingVertical="12dp"
                 android:paddingHorizontal="16dp"/>
@@ -134,6 +151,7 @@
                 android:layout_marginStart="8dp"
                 android:text="cancel"
                 android:textColor="@color/black"
+                android:textSize="12dp"
                 android:textAlignment="center"
                 android:fontFamily="@font/abril_fatface"
                 android:background="@drawable/bg_btn_cancel"

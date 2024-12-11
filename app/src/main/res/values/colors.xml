@@ -10,4 +10,5 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="delete_red">#FF5252</color>
+    <color name="skyblue">#40A7C7E7</color>
 </resources>

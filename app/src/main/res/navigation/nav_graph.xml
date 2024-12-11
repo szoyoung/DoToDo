@@ -5,9 +5,9 @@
     app:startDestination="@id/todoListFragment">
 
     <fragment
-        android:id="@+id/gptScheduleFragment"
+        android:id="@+id/aiScheduleFragment"
         android:name="com.example.dotodo.fragment.ScheduleFragment"
-        android:label="GPT 스케줄링" />
+        android:label="ai 스케줄링" />
 
     <fragment
         android:id="@+id/todoListFragment"

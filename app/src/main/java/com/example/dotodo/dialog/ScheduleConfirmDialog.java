@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
@@ -32,13 +33,18 @@ public class ScheduleConfirmDialog extends Dialog {
 
         Window window = getWindow();
         if (window != null) {
-            // 코드로 직접 shape drawable 생성
             GradientDrawable shape = new GradientDrawable();
             shape.setShape(GradientDrawable.RECTANGLE);
             shape.setColor(Color.WHITE);
             shape.setCornerRadius(50f); // radius 크기 조절 가능
 
             window.setBackgroundDrawable(shape);
+
+            // 다이얼로그의 가로 크기 설정
+            WindowManager.LayoutParams layoutParams = new WindowManager.LayoutParams();
+            layoutParams.copyFrom(window.getAttributes());
+            layoutParams.width = (int) (getContext().getResources().getDisplayMetrics().widthPixels * 0.85); // 화면 너비의 85%로 설정
+            window.setAttributes(layoutParams);
         }
 
         Button confirmButton = findViewById(R.id.btn_confirm);

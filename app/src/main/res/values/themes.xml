@@ -5,12 +5,15 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <!-- set No status bar -->
         <item name="android:windowFullscreen">true</item>
+        <item name="colorPrimary">@color/black</item>
+
+
 
 
     </style>
 
     <style name="CustomBottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView">
-        <item name="android:minHeight">52dp</item> <!-- 기본 56dp에서 52dp로 줄임 -->
+        <item name="android:minHeight">54dp</item>
     </style>
 
     <style name="RoundedTextInputLayout" parent="">

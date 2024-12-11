@@ -12,23 +12,17 @@ import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.dotodo.data.model.Task;
 import com.example.dotodo.network.GeminiClient;
 import com.example.dotodo.network.GenerateContentRequest;
 import com.example.dotodo.network.GenerateContentResponse;
 import com.example.dotodo.receiver.AlarmReceiver;
-import com.example.dotodo.viewmodel.TaskViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
         checkNotificationPermission();
         setupDailyAlarm();
 
-        // 테스트용 코드
-        //testGeminiApi(this);
 
         /*
         // 테스트용 코드
